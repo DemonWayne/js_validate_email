@@ -11,10 +11,10 @@ describe(`Function 'validateEmail':`, () => {
     expect(typeof validateEmail('')).toBe('boolean');
   });
 
-  // it(`should return 'false' for email with trailing dot`, () => {
-  //   expect(validateEmail('test838@gmail.com.'))
-  //     .toBeFalsy();
-  // });
+  it(`should return 'false' for email with trailing dot`, () => {
+    expect(validateEmail('test838@gmail.com.'))
+      .toBeFalsy();
+  });
 
   it(`should return 'false' for the invalid email`, () => {
     expect(validateEmail('invalid-email@com'))
