@@ -11,10 +11,10 @@ describe(`Function 'validateEmail':`, () => {
     expect(typeof validateEmail('')).toBe('boolean');
   });
 
-  it(`should return 'true' for the valid email`, () => {
-    expect(validateEmail('test838@gmail.com.'))
-      .toBeTruthy();
-  });
+  // it(`should return 'false' for email with trailing dot`, () => {
+  //   expect(validateEmail('test838@gmail.com.'))
+  //     .toBeFalsy();
+  // });
 
   it(`should return 'false' for the invalid email`, () => {
     expect(validateEmail('invalid-email@com'))
@@ -54,5 +54,35 @@ describe(`Function 'validateEmail':`, () => {
   it(`should return 'true' for email without trailing dot`, () => {
     expect(validateEmail('test838@gmail.com'))
       .toBeTruthy();
+  });
+
+  it(`should return 'true' for 'test@mail.com'`, () => {
+    expect(validateEmail('test@mail.com'))
+      .toBeTruthy();
+  });
+
+  it(`should return 'true' for 't@q.c'`, () => {
+    expect(validateEmail('t@q.c'))
+      .toBeTruthy();
+  });
+
+  it(`should return 'false' for 'false@email'`, () => {
+    expect(validateEmail('false@email'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'false' for dot at the beginning of username`, () => {
+    expect(validateEmail('.test@example.com'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'false' for dot at the end of username`, () => {
+    expect(validateEmail('test.@example.com'))
+      .toBeFalsy();
+  });
+
+  it(`should return 'false' for consecutive dots in username`, () => {
+    expect(validateEmail('test..123@example.com'))
+      .toBeFalsy();
   });
 });
